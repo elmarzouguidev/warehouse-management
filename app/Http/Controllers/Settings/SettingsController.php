@@ -12,7 +12,7 @@ class SettingsController extends Controller
 {
 
 
-    public function __invoke(GeneralSettings $settings)
+    public function index(GeneralSettings $settings)
     {
         return view('setting.index', [
             'app_name' => $settings->app_name,

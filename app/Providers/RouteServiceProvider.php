@@ -2,6 +2,7 @@
 
 namespace App\Providers;
 
+use App\Http\Controllers\Settings\SettingsController;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 use Illuminate\Http\Request;
@@ -38,6 +39,7 @@ class RouteServiceProvider extends ServiceProvider
         });
 
         $this->devlopperRoutes();
+        $this->settingsRoutes();
     }
 
     private function devlopperRoutes()
@@ -46,6 +48,19 @@ class RouteServiceProvider extends ServiceProvider
             ->prefix('dev')
             ->namespace($this->namespace)
             ->group(base_path('routes/dev/dev.php'));
+    }
+
+    private function settingsRoutes()
+    {
+        
+        Route::macro('settingsRoutes', function ($prefix) {
+            Route::group([
+                'prefix' => $prefix,
+            ], function () {
+                Route::get('/', [SettingsController::class, 'index'])->name("settings.index");
+                Route::post('/update', [SettingsController::class, 'update'])->name("settings.update");
+            })->middleware('web');
+        });
     }
 
     /**
