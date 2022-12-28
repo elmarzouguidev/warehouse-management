@@ -16,6 +16,8 @@ class GeneralSettings extends Settings
 
     public bool $app_active;
 
+    public $app_timezone;
+
     public static function group(): string
     {
         return 'general';
