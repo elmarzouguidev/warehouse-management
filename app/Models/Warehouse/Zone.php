@@ -1,18 +1,17 @@
 <?php
 
+declare(strict_types=1);
+
 namespace App\Models\Warehouse;
 
 use App\Models\Auth\User;
-use App\Models\City\City;
-use App\Models\City\Region;
 use App\Traits\GetModelByUuid;
 use App\Traits\UuidGenerator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasMany;
 
-class Warehouse extends Model
+class Zone extends Model
 {
     use HasFactory;
     use UuidGenerator;
@@ -25,14 +24,10 @@ class Warehouse extends Model
      */
     protected $fillable = [
         'uuid',
-        'is_active',
         'name',
-        'contact',
-        'address',
-        'map',
-        'manager_id',
-        'city_id',
-        'region_id'
+        'description',
+        'warehouse_id',
+        'is_active',
     ];
 
 
@@ -45,23 +40,13 @@ class Warehouse extends Model
         'is_active' => 'boolean',
     ];
 
-    public function city(): BelongsTo
+    public function warehouse(): BelongsTo
     {
-        return $this->belongsTo(City::class);
+        return $this->belongsTo(Warehouse::class);
     }
 
-    public function region(): BelongsTo
-    {
-        return $this->belongsTo(Region::class);
-    }
-
-    public function manager(): BelongsTo
+    public function responsable(): BelongsTo
     {
         return $this->belongsTo(User::class, 'user_id');
-    }
-
-    public function zones(): HasMany
-    {
-        return $this->hasMany(Zone::class);
     }
 }
