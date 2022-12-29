@@ -1,13 +1,11 @@
 <?php
 
-declare(strict_types=1);
-
-namespace {{ namespace }};
+namespace Database\Seeders;
 
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class {{ class }} extends Seeder
+class WarehouseSeeder extends Seeder
 {
     /**
      * Run the database seeds.

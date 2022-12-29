@@ -1,15 +1,13 @@
 <?php
 
-declare(strict_types=1);
+namespace App\Models\City;
 
-namespace {{ namespace }};
-
+use App\Traits\GetModelByUuid;
+use App\Traits\UuidGenerator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Traits\UuidGenerator;
-use App\Traits\GetModelByUuid;
 
-class {{ class }} extends Model
+class Region extends Model
 {
     use HasFactory;
     use UuidGenerator;
@@ -22,7 +20,10 @@ class {{ class }} extends Model
      */
     protected $fillable = [
         'uuid',
+        'name',
         'is_active',
+        'code',
+        'city_id',
     ];
     
 
@@ -34,4 +35,9 @@ class {{ class }} extends Model
     protected $casts = [
         'is_active' => 'boolean',
     ];
+
+    public function city()
+    {
+        return $this->belongsTo(City::class);
+    }
 }

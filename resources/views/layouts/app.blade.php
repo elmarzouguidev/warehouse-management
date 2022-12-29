@@ -16,6 +16,8 @@
 
     <title>Warehouse management</title>
 
+    @vite('resources/css/app.css')
+
     @livewireStyles
     
 </head>
@@ -23,6 +25,7 @@
 <body>
 
     @wireUiScripts
+    
     @livewireScripts
 </body>
 
