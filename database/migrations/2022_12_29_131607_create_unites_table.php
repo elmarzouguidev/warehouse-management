@@ -15,7 +15,7 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('unites', function (Blueprint $table) {
+        Schema::create('units', function (Blueprint $table) {
             $table->id();
             $table->uuid();
             
@@ -35,6 +35,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('unites');
+        Schema::dropIfExists('units');
     }
 };

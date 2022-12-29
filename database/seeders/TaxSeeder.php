@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Models\Utilities\Taxe;
+use App\Models\Utilities\Tax;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
@@ -24,7 +24,7 @@ class TaxeSeeder extends Seeder
         ];
 
         foreach ($taxes as $taxe) {
-            Taxe::create($taxe);
+            Tax::create($taxe);
         }
     }
 }

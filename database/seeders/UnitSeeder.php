@@ -4,11 +4,11 @@ declare(strict_types=1);
 
 namespace Database\Seeders;
 
-use App\Models\Utilities\Unite;
+use App\Models\Utilities\Unit;
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 
-class UniteSeeder extends Seeder
+class UnitSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -25,7 +25,7 @@ class UniteSeeder extends Seeder
         ];
 
         foreach ($unites as $unite) {
-            Unite::create($unite);
+            Unit::create($unite);
         }
     }
 }

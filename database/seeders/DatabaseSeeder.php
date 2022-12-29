@@ -30,8 +30,8 @@ class DatabaseSeeder extends Seeder
         $this->call(ZoneSeeder::class);
 
         $this->call(CurrencySeeder::class);
-        $this->call(TaxeSeeder::class);
-        $this->call(UniteSeeder::class);
+        $this->call(TaxSeeder::class);
+        $this->call(UnitSeeder::class);
 
         $this->call(RoleSeeder::class);
         $this->call(AdminSeeder::class);

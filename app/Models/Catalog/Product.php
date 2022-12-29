@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace App\Models\Catalog;
 
-use App\Models\Utilities\Taxe;
+use App\Models\Utilities\Tax;
 use App\Models\Utilities\Unite;
 use App\Traits\GetModelByUuid;
 use App\Traits\UuidGenerator;
@@ -38,9 +38,9 @@ class Product extends Model
         'is_active' => 'boolean',
     ];
 
-    public function taxe(): BelongsTo
+    public function tax(): BelongsTo
     {
-        return $this->belongsTo(Taxe::class);
+        return $this->belongsTo(Tax::class,'taxe_id');
     }
 
     public function category(): BelongsTo
