@@ -5,6 +5,8 @@ declare(strict_types=1);
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
+use App\Models\Shipping\Shipping;
+use App\Models\Auth\User;
 
 return new class extends Migration
 {
@@ -15,19 +17,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('currencies', function (Blueprint $table) {
+        Schema::create('forwarders', function (Blueprint $table) {
             $table->id();
             $table->uuid();
 
-            $table->string('name', 100)->unique();
-            $table->string('symbole', 100);
-            $table->integer('code')->default(0);
+            // shipping , wallet, zone, 
+
+            $table->foreignIdFor(User::class)->index()->nullable()->constrained()->nullOnDelete();
+            $table->foreignIdFor(Shipping::class)->index()->nullable()->constrained()->nullOnDelete();
             
-            // symbol position left or right left 0, right 1
-            $table->integer('position')->default(1);
+            $table->string('name', 100);
+            $table->string('contact', 100);
+            $table->longText('address');
             
-            $table->boolean('default')->default(false);
-            
+            // last location
+            $table->longText('last_location')->nullable();
+
             $table->boolean('is_active')->default(true); 
             $table->timestamps();
             $table->softDeletes();
@@ -41,6 +46,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('currencies');
+        Schema::dropIfExists('forwarders');
     }
 };

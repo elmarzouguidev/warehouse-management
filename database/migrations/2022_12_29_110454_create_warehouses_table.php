@@ -28,6 +28,7 @@ return new class extends Migration
             $table->string('contact', 100);
             $table->longText('address');
             $table->longText('map')->nullable();
+            // space (1000 square meter) ?? 
 
             $table->boolean('is_active')->default(true);
             $table->timestamps();

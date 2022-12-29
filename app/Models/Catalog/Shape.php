@@ -2,18 +2,23 @@
 
 declare(strict_types=1);
 
-namespace App\Models\Warehouse;
+namespace App\Models\Catalog;
 
 use App\Traits\GetModelByUuid;
 use App\Traits\UuidGenerator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bin extends Model
+class Shape extends Model
 {
     use HasFactory;
     use UuidGenerator;
     use GetModelByUuid;
+
+    // product shape 
+    // situation : we have some product with a shape 10x10 
+    // a bin can take up to 10 products with some shape like 10mts or 5x5mts, 
+    // so we can calculate the value of each product to determine the value of this bin
 
     /**
      * The attributes that are mass assignable.
@@ -22,11 +27,7 @@ class Bin extends Model
      */
     protected $fillable = [
         'uuid',
-        'description',
-        'name',
         'is_active',
-        'size_id',
-        'property_id'
     ];
     
 

@@ -2,18 +2,29 @@
 
 declare(strict_types=1);
 
-namespace App\Models\Warehouse;
+namespace App\Models\Outound;
 
 use App\Traits\GetModelByUuid;
 use App\Traits\UuidGenerator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Auth\User;
+use App\Enums\OutboundStatus;
 
-class Bin extends Model
+class Outbound extends Model
 {
     use HasFactory;
     use UuidGenerator;
     use GetModelByUuid;
+
+
+    // dn status enum
+    // customer
+
+    // picking list 
+    // shipping list 
+
+    // proof of delivery 
 
     /**
      * The attributes that are mass assignable.
@@ -22,11 +33,18 @@ class Bin extends Model
      */
     protected $fillable = [
         'uuid',
-        'description',
-        'name',
         'is_active',
-        'size_id',
-        'property_id'
+        'date',
+        'code',
+        'status',
+        'name',
+        'manager_id',
+        'product_id',
+        'forwarder_id',
+        'warehouse_id',
+        'value',
+        'total weight',
+        'total volume'
     ];
     
 
@@ -37,5 +55,11 @@ class Bin extends Model
      */
     protected $casts = [
         'is_active' => 'boolean',
+        'status' => OutboundStatus::class,
     ];
+
+    public function manager(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

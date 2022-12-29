@@ -2,31 +2,48 @@
 
 declare(strict_types=1);
 
-namespace App\Models\Warehouse;
+namespace App\Models\Inbound;
 
 use App\Traits\GetModelByUuid;
 use App\Traits\UuidGenerator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Auth\User;
+use App\Enums\InboudStatus;
 
-class Bin extends Model
+class Inbound extends Model
 {
     use HasFactory;
     use UuidGenerator;
     use GetModelByUuid;
 
-    /**
+    // supplier 
+    
+    // asn status enums
+    
+ 
+
+    // receving list
+
+    /** 
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
         'uuid',
-        'description',
-        'name',
         'is_active',
-        'size_id',
-        'property_id'
+        'date',
+        'code',
+        'status',
+        'name',
+        'manager_id',
+        'product_id',
+        'forwarder_id',
+        'warehouse_id',
+        'value',
+        'total_weight',
+        'total_volume',
     ];
     
 
@@ -37,5 +54,11 @@ class Bin extends Model
      */
     protected $casts = [
         'is_active' => 'boolean',
+        'status' => InboudStatus::class,
     ];
+
+    public function manager(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

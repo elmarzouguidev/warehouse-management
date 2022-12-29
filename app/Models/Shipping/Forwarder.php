@@ -2,31 +2,32 @@
 
 declare(strict_types=1);
 
-namespace App\Models\Warehouse;
+namespace App\Models\Shipping;
 
 use App\Traits\GetModelByUuid;
 use App\Traits\UuidGenerator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bin extends Model
+class Forwarder extends Model
 {
     use HasFactory;
     use UuidGenerator;
     use GetModelByUuid;
 
-    /**
+        /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
         'uuid',
-        'description',
-        'name',
         'is_active',
-        'size_id',
-        'property_id'
+        'name',
+        'contact',
+        'address',
+        'last_location',
+        'shipping_id'
     ];
     
 
@@ -38,4 +39,9 @@ class Bin extends Model
     protected $casts = [
         'is_active' => 'boolean',
     ];
+
+    public function forwarder(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }
