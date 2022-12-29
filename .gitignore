@@ -16,5 +16,4 @@ yarn-error.log
 /.fleet
 /.idea
 /.vscode
-.env.example
 package-lock.json
