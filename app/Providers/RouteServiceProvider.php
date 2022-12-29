@@ -52,13 +52,17 @@ class RouteServiceProvider extends ServiceProvider
 
     private function settingsRoutes()
     {
-        
+
         Route::macro('settingsRoutes', function ($prefix) {
             Route::group([
                 'prefix' => $prefix,
             ], function () {
+
                 Route::get('/', [SettingsController::class, 'index'])->name("settings.index");
                 Route::post('/update', [SettingsController::class, 'update'])->name("settings.update");
+
+                //Route::get('/email', [SettingsController::class, 'index'])->name("settings.email.index");
+                Route::post('/email', [SettingsController::class, 'updateEmail'])->name("settings.update.email");
             })->middleware('web');
         });
     }

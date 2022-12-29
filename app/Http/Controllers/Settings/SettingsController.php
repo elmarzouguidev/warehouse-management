@@ -3,9 +3,12 @@
 namespace App\Http\Controllers\Settings;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\Settings\EmailSettingsFormRequest;
 use App\Http\Requests\Settings\SettingsFormRequest;
+use App\Settings\EmailSettings;
 use App\Settings\GeneralSettings;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Artisan;
 use Illuminate\Support\Facades\Storage;
 
 class SettingsController extends Controller
@@ -46,6 +49,41 @@ class SettingsController extends Controller
         }
 
         $settings->save();
+
+        return redirect()->back()->with('success', 'Update a éte effectuer avec success');
+    }
+
+    public function updateEmail(EmailSettingsFormRequest $request, EmailSettings $settings)
+    {
+
+        $settings->mail_mailer = $request->mail_mailer;
+        $settings->mail_host = $request->mail_host;
+        $settings->mail_port = $request->mail_port;
+        $settings->mail_encryption = $request->mail_encryption;
+
+        $settings->mail_from_name = $request->mail_from_name;
+        $settings->mail_from_address = $request->mail_from_address;
+        $settings->mail_username = $request->mail_username;
+        $settings->mail_password = $request->mail_password;
+
+        $settings->save();
+
+        Artisan::call('config:clear');
+
+        upsertEnvironmentValue([
+            'mail_mailer' => $settings->mail_mailer,
+            'mail_host' => $settings->mail_host,
+            'mail_port' => $settings->mail_port,
+            'mail_username' => $settings->mail_username,
+            'mail_password' => $settings->mail_password,
+            'mail_encryption' => $settings->mail_encryption,
+            'mail_from_address' => $settings->mail_from_address,
+            'mail_from_name' => $settings->mail_from_name,
+        ]);
+
+        if (app()->environment('production')) {
+            Artisan::call('config:cache');
+        }
 
         return redirect()->back()->with('success', 'Update a éte effectuer avec success');
     }
