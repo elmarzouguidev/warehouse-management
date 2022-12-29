@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
         $this->call(WarehouseSeeder::class);
         $this->call(ZoneSeeder::class);
 
+        $this->call(CurrencySeeder::class);
         $this->call(TaxeSeeder::class);
         $this->call(UniteSeeder::class);
 
