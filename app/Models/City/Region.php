@@ -6,6 +6,7 @@ use App\Traits\GetModelByUuid;
 use App\Traits\UuidGenerator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Region extends Model
 {
@@ -13,7 +14,7 @@ class Region extends Model
     use UuidGenerator;
     use GetModelByUuid;
 
-        /**
+    /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
@@ -25,7 +26,7 @@ class Region extends Model
         'code',
         'city_id',
     ];
-    
+
 
     /**
      * The attributes that should be cast.
@@ -36,7 +37,7 @@ class Region extends Model
         'is_active' => 'boolean',
     ];
 
-    public function city()
+    public function city(): BelongsTo
     {
         return $this->belongsTo(City::class);
     }

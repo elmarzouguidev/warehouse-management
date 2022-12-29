@@ -17,6 +17,8 @@ return new class extends Migration
             $table->id();
             $table->uuid();
 
+            $table->string('name',100);
+            $table->mediumText('description')->nullable();
 
             $table->boolean('is_active')->default(true); 
             $table->timestamps();
