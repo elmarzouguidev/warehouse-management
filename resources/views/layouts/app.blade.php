@@ -17,10 +17,12 @@
     <title>Warehouse management</title>
 
     @livewireStyles
+    
 </head>
 
 <body>
 
+    @wireUiScripts
     @livewireScripts
 </body>
 
