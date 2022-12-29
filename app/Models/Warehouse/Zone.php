@@ -27,6 +27,7 @@ class Zone extends Model
         'name',
         'description',
         'warehouse_id',
+        'user_id',
         'is_active',
     ];
 

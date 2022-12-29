@@ -17,7 +17,7 @@ class SizeSeeder extends Seeder
      */
     public function run()
     {
-        $datas = [
+        $sizes = [
             ['name' => 'Tiny', 'wide' => 200, 'depth' => 250, 'height' => 300],
             ['name' => 'Small', 'wide' => 800, 'depth' => 1000, 'height' => 1200],
             ['name' => 'Floor', 'wide' => 10000, 'depth' => 10000, 'height' => 10000],
@@ -25,8 +25,8 @@ class SizeSeeder extends Seeder
 
         ];
 
-        foreach ($datas as $data) {
-            Size::create($data);
+        foreach ($sizes as $size) {
+            Size::create($size);
         }
     }
 }
