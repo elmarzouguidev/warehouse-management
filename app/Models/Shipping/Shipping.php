@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Auth\User;
 use App\Enums\ShippingStatus;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Shipping extends Model
 {

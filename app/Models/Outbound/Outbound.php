@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Models\Outound;
+namespace App\Models\Outbound;
 
 use App\Traits\GetModelByUuid;
 use App\Traits\UuidGenerator;
@@ -10,6 +10,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use App\Models\Auth\User;
 use App\Enums\OutboundStatus;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Outbound extends Model
 {
@@ -43,8 +44,8 @@ class Outbound extends Model
         'forwarder_id',
         'warehouse_id',
         'value',
-        'total weight',
-        'total volume'
+        'total_weight',
+        'total_volume'
     ];
     
 

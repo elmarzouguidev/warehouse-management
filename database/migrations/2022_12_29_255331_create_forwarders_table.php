@@ -5,8 +5,6 @@ declare(strict_types=1);
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
-use App\Models\Shipping\Shipping;
-use App\Models\Auth\User;
 
 return new class extends Migration
 {
@@ -21,11 +19,6 @@ return new class extends Migration
             $table->id();
             $table->uuid();
 
-            // shipping , wallet, zone, 
-
-            $table->foreignIdFor(User::class)->index()->nullable()->constrained()->nullOnDelete();
-            $table->foreignIdFor(Shipping::class)->index()->nullable()->constrained()->nullOnDelete();
-            
             $table->string('name', 100);
             $table->string('contact', 100);
             $table->longText('address');
