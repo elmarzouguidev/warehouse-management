@@ -6,6 +6,7 @@ namespace App\Models\Auth;
 
 use App\Traits\GetModelByUuid;
 use App\Traits\UuidGenerator;
+use Database\Factories\Auth\UserFactory;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -47,4 +48,9 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
         'is_active' => 'boolean'
     ];
+
+    protected static function newFactory()
+    {
+        return UserFactory::new();
+    }
 }
