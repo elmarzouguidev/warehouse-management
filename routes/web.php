@@ -17,4 +17,5 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+/***settings routes  */
 Route::settingsRoutes('settings');
