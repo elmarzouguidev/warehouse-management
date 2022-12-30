@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 declare(strict_types=1);
 
@@ -7,10 +7,9 @@ namespace App\Enums;
 enum OutboundStatus: string
 {
 
-    const PreOrder = '0';
-    const NewOrder = '1';
-    const BackOrder = '2';
-    const PrePick = '3';
-    const Picked = '4';
-    
+    const  PRE_ORDER = '0';
+    const  NEW_ORDER = '1';
+    const  BACK_ORDER = '2';
+    const  PRE_PICK = '3';
+    const  PICKED = '4';
 }
