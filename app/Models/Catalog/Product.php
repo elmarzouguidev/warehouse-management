@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Models\Catalog;
 
 use App\Models\Utilities\Tax;
-use App\Models\Utilities\Unite;
+use App\Models\Utilities\Unit;
 use App\Traits\GetModelByUuid;
 use App\Traits\UuidGenerator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -17,6 +17,8 @@ class Product extends Model
     use HasFactory;
     use UuidGenerator;
     use GetModelByUuid;
+
+    // expirydate 
 
     /**
      * The attributes that are mass assignable.
@@ -53,8 +55,8 @@ class Product extends Model
         return $this->belongsTo(Brand::class);
     }
 
-    public function unite(): BelongsTo
+    public function unit(): BelongsTo
     {
-        return $this->belongsTo(Unite::class);
+        return $this->belongsTo(Unit::class);
     }
 }

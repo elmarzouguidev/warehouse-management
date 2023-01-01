@@ -16,7 +16,8 @@ class Shape extends Model
     use GetModelByUuid;
 
     // product shape 
-    // situation : we have some product with a shape 10x10 
+    // situation : 
+    // we have some product with a shape 10x10 
     // a bin can take up to 10 products with some shape like 10mts or 5x5mts, 
     // so we can calculate the value of each product to determine the value of this bin
 

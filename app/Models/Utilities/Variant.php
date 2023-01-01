@@ -2,18 +2,23 @@
 
 declare(strict_types=1);
 
-namespace App\Models\Warehouse;
+namespace App\Models\Utilities;
 
 use App\Traits\GetModelByUuid;
 use App\Traits\UuidGenerator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bin extends Model
+class Variant extends Model
 {
     use HasFactory;
     use UuidGenerator;
     use GetModelByUuid;
+
+    // variant global, works for product, warehouse, shipping, or whatever
+    // option ['value' 'price'] 
+    // for product model, when price is set we can add variant price to it 
+    //
 
     /**
      * The attributes that are mass assignable.
@@ -22,13 +27,7 @@ class Bin extends Model
      */
     protected $fillable = [
         'uuid',
-        'description',
-        'name',
         'is_active',
-        'size_id',
-        'property_id',
-        'type_id',
-        'price_id'
     ];
     
 

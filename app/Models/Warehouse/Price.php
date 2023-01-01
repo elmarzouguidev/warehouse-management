@@ -9,26 +9,20 @@ use App\Traits\UuidGenerator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bin extends Model
+class Price extends Model
 {
     use HasFactory;
     use UuidGenerator;
     use GetModelByUuid;
 
-    /**
+        /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
         'uuid',
-        'description',
-        'name',
         'is_active',
-        'size_id',
-        'property_id',
-        'type_id',
-        'price_id'
     ];
     
 

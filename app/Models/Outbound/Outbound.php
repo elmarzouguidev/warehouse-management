@@ -18,8 +18,6 @@ class Outbound extends Model
     use UuidGenerator;
     use GetModelByUuid;
 
-
-    // dn status enum
     // customer
 
     // picking list 

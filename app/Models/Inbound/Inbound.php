@@ -20,10 +20,6 @@ class Inbound extends Model
 
     // supplier 
     
-    // asn status enums
-    
- 
-
     // receving list
 
     /** 

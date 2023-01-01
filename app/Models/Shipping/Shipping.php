@@ -18,9 +18,6 @@ class Shipping extends Model
     use UuidGenerator;
     use GetModelByUuid;
 
-
-
-
     /**
      * The attributes that are mass assignable.
      *

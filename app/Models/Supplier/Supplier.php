@@ -2,33 +2,27 @@
 
 declare(strict_types=1);
 
-namespace App\Models\Warehouse;
+namespace App\Models\Supplier;
 
 use App\Traits\GetModelByUuid;
 use App\Traits\UuidGenerator;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bin extends Model
+class Supplier extends Model
 {
     use HasFactory;
     use UuidGenerator;
     use GetModelByUuid;
 
-    /**
+        /**
      * The attributes that are mass assignable.
      *
      * @var array<int, string>
      */
     protected $fillable = [
         'uuid',
-        'description',
-        'name',
         'is_active',
-        'size_id',
-        'property_id',
-        'type_id',
-        'price_id'
     ];
     
 
